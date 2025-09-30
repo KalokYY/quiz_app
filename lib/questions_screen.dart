@@ -45,7 +45,7 @@ class _QuestionScreenState extends State<QuestionsScreen> {
               return AnswerButton(
                 answerText: item, 
                 onTap: () {
-                  answerQuestion(item)
+                  answerQuestion(item);
                 },
               );
             }),          
