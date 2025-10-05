@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 
@@ -27,51 +28,58 @@ class ResultsScreen extends StatelessWidget{
     return summary;
   }
 
-  @override
-  Widget build(context)
-  {
-    final summaryData = this.summaryData;
+@override
+Widget build(context)
+{
+  final summaryData = this.summaryData;
 
-    final numTotalQuestions = questions.length;
-    final numCorrectQuestions = summaryData.where(
-    (data) 
-      {
-        return data['correct_answer'] == data['user_answer'];
-      }
-    ).length;
+  final numTotalQuestions = questions.length;
+  final numCorrectQuestions = summaryData.where(
+  (data) => data ['correct_answer'] == data['user_answer']
+  ).length;
 
-    return SizedBox(
-      width: double.infinity,
-      child: Container(
-        margin: const EdgeInsets.all(40),
-        child:  Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:  [
-            Text('You answered $numCorrectQuestions out of $numTotalQuestions questions Correctly'),
-            const SizedBox(
-              height:30,
+  return SizedBox(
+    width: double.infinity,
+    child: Container(
+      margin: const EdgeInsets.all(40),
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children:  [
+          Text(
+            'You answered $numCorrectQuestions out of $numTotalQuestions questions Correctly',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
+            color: const Color.fromARGB(255, 230, 201, 255),
+            fontSize: 20, 
+            fontWeight: FontWeight.bold,
             ),
-            SizedBox(
-              height: 300,
-              child: SingleChildScrollView(
-                child: QuestionsSummary(summaryData: summaryData),
-              )
-            ),
-            //'Loop though chosenAnswer and so something with it
-            const SizedBox(
-              height:30,
-            ),
-            TextButton.icon(
-              onPressed: onRestart,
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
-              ),
-              icon: const Icon(Icons.refresh),
-              label: const Text('Restart Quiz'),
+          ),
+          
+
+          const SizedBox(
+            height:30,
+          ),
+          SizedBox(
+            height: 300,
+            child: SingleChildScrollView(
+              child: QuestionsSummary(summaryData: summaryData),
             )
-          ],
-        ),
+          ),
+          //'Loop though chosenAnswer and so something with it
+          const SizedBox(
+            height:30,
+          ),
+          TextButton.icon(
+            onPressed: onRestart,
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            icon: const Icon(Icons.refresh),
+            label: const Text('Restart Quiz'),
+          )
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }
