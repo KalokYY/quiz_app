@@ -25,18 +25,28 @@ class _QuizState extends State<Quiz> {
         // selectedAnswers = [];
         activeScreen = ResultsScreen(
           chosenAnswers: selectedAnswers,
+          onRestart: restartQuiz,
         );
       });
     }
   }
 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = StartScreen(switchScreen);
+    });
+  }
+
+
+
   @override
   void initState() {
-    activeScreen = StartScreen(switchScreeen);
+    activeScreen = StartScreen(switchScreen);
     super.initState();
   }
   
-  void switchScreeen() {
+  void switchScreen() {
     setState(
       (){
         activeScreen = QuestionsScreen(

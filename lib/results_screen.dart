@@ -3,10 +3,16 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget{
-  const ResultsScreen({super.key, required this.chosenAnswers});
-  final List<String> chosenAnswers; 
+  const ResultsScreen({
+    super.key, 
+    required this.chosenAnswers, 
+    required this.onRestart,
+    });
 
-  List<Map<String, Object>> getSummaryData() {
+  final List<String> chosenAnswers; 
+  final void Function() onRestart;
+
+  List<Map<String, Object>> get summaryData {
     List<Map<String, Object>> summary = [];
 
     for(var i = 0; i < chosenAnswers.length; i++) {
@@ -24,7 +30,7 @@ class ResultsScreen extends StatelessWidget{
   @override
   Widget build(context)
   {
-    final summaryData = getSummaryData();
+    final summaryData = this.summaryData;
 
     final numTotalQuestions = questions.length;
     final numCorrectQuestions = summaryData.where(
@@ -45,14 +51,23 @@ class ResultsScreen extends StatelessWidget{
             const SizedBox(
               height:30,
             ),
-            QuestionsSummary(summaryData: getSummaryData()),
+            SizedBox(
+              height: 300,
+              child: SingleChildScrollView(
+                child: QuestionsSummary(summaryData: summaryData),
+              )
+            ),
             //'Loop though chosenAnswer and so something with it
             const SizedBox(
               height:30,
             ),
-            TextButton(
-              onPressed: (){},
-              child: const Text('Restart Quiz'),
+            TextButton.icon(
+              onPressed: onRestart,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Restart Quiz'),
             )
           ],
         ),
