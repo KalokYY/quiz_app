@@ -50,12 +50,10 @@ Widget build(context)
             textAlign: TextAlign.center,
             style: GoogleFonts.lato(
             color: const Color.fromARGB(255, 230, 201, 255),
-            fontSize: 20, 
+            fontSize: 24, 
             fontWeight: FontWeight.bold,
             ),
           ),
-          
-
           const SizedBox(
             height:30,
           ),
@@ -63,7 +61,7 @@ Widget build(context)
             height: 300,
             child: SingleChildScrollView(
               child: QuestionsSummary(summaryData: summaryData),
-            )
+            ),
           ),
           //'Loop though chosenAnswer and so something with it
           const SizedBox(

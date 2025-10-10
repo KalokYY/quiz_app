@@ -20,8 +20,8 @@ return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 30,
-              height: 30,
+              width: 40,
+              height: 40,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: isCorrect
@@ -32,6 +32,7 @@ return Column(
               child: Text(
                 questionIndex.toString(),
                 style: GoogleFonts.lato(
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: const Color.fromARGB(255, 22, 2, 56)
                 ),
@@ -49,6 +50,7 @@ return Column(
                     Text(
                       data['question'] as String,
                       style: GoogleFonts.lato(
+                        fontSize: 16,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
@@ -59,6 +61,7 @@ return Column(
                     Text(
                       data['user_answer'] as String, 
                       style: GoogleFonts.lato(
+                        fontSize: 14,
                         color: isCorrect
                         ? const Color.fromARGB(255, 150, 198, 241)
                         : const Color.fromARGB(255, 249, 133, 241),
@@ -67,6 +70,7 @@ return Column(
                       Text(
                         data ['correct_answer'] as String,
                         style: GoogleFonts.lato(
+                          fontSize: 14,
                           color: const Color.fromARGB(255, 181, 254, 246),
                         ),
                       ),
