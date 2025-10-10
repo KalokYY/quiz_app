@@ -20,8 +20,8 @@ class AnswerButton extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 3, 1, 95),
         foregroundColor: Colors.white, 
         padding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 40, 
+          vertical: 8,
+          horizontal: 20, 
         ),
       ),
       child: Text(
@@ -29,7 +29,7 @@ class AnswerButton extends StatelessWidget {
         textAlign: TextAlign.center,
         style: GoogleFonts.lato(
           color: Colors.white,
-          fontSize: 24,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
         )
       ),
